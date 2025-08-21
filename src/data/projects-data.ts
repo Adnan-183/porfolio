@@ -25,6 +25,28 @@ export const projectData: Project[] = [
   thumbnail: '/png/dawgpound.png'
 },
 {
+  title: 'Zigu ',
+  tech: 'Flutter (Getx-State Management)',
+  description: "Zigu is a driver-focused app that enables load creation and complete trip tracking. Drivers can manage their profile, view employment history, work independently or under a company, and access trip reports with CV download options. The app also allows company-assigned loads, self-created loads, and offers integrated health insurance purchasing for drivers.",
+  googlePlayLink: 'https://play.google.com/store/apps/details?id=com.tiecodes.zigu_v2&pcampaignid=web_share',
+  thumbnail: ''
+},
+{
+  title: 'Bridge Expedite',
+  tech: 'Flutter (Getx-State Management)',
+  description: "",
+  googlePlayLink: 'https://play.google.com/store/apps/details?id=tiecodes.com.bridge_expedite&pcampaignid=web_share',
+  thumbnail: ''
+},
+
+{
+  title: 'Utrack',
+  tech: 'Flutter (Getx-State Management)',
+  description: "",
+  googlePlayLink: 'https://play.google.com/store/apps/details?id=com.tiecodes.u_track&pcampaignid=web_share',
+  thumbnail: ''
+},
+{
   title: 'SwipeLover - The Dating App',
   tech: 'Flutter (Bloc-State Management)',
   description: "SwipeLover is a social app for meeting new people through chatting, random match-based chats, and live streaming. With a focus on privacy and simplicity, it offers a fun, safe space to build real connections in real time.",
