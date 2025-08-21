@@ -96,7 +96,10 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             </div>
             
             <div className="flex flex-wrap gap-3">
-              {project.googlePlayLink && project.googlePlayLink !== 'In Development' && (
+              {project.googlePlayLink && 
+               project.googlePlayLink !== 'In Development' && 
+               project.googlePlayLink !== '' && 
+               project.googlePlayLink.includes('play.google.com') && (
                 <motion.a
                   href={project.googlePlayLink}
                   target="_blank"
@@ -110,7 +113,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 </motion.a>
               )}
               
-              {project.appStoreLink && (
+              {project.appStoreLink && 
+               project.appStoreLink !== '' && 
+               project.appStoreLink.includes('apps.apple.com') && (
                 <motion.a
                   href={project.appStoreLink}
                   target="_blank"
@@ -131,7 +136,9 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 </div>
               )}
               
-              {!project.googlePlayLink && !project.appStoreLink && project.link && (
+              {(!project.googlePlayLink || project.googlePlayLink === '' || project.googlePlayLink === 'In Development') && 
+               (!project.appStoreLink || project.appStoreLink === '') && 
+               project.link && (
                 <motion.a
                   href={project.link}
                   target="_blank"
@@ -145,6 +152,16 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                   <ExternalLink className="w-4 h-4" />
                 </motion.a>
               )}
+              
+              {/* Show message when no links are available */}
+              {(!project.googlePlayLink || project.googlePlayLink === '' || project.googlePlayLink === 'In Development') && 
+               (!project.appStoreLink || project.appStoreLink === '') && 
+               !project.link && (
+                 <div className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-gray-400 to-gray-500 text-white text-sm font-medium rounded-xl">
+                   <div className="w-2 h-2 bg-white rounded-full"></div>
+                   <span>Coming Soon</span>
+                 </div>
+               )}
             </div>
           </div>
         </div>

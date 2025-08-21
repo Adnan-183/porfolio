@@ -7,14 +7,14 @@ export const projectData: Project[] = [
   title: 'RentPe',
   tech: 'Flutter (Bloc-State Management)',
   description: "Property rental platform connecting landlords and tenants with advanced search filters, virtual tours, and secure payment processing.",
-  googlePlayLink: '',
+  googlePlayLink: 'In Development',
   thumbnail: '/png/rentpe.png'
 },
 {
   title: 'Yuunri',
   tech: 'Flutter (Bloc-State Management)',
   description: "A modern eCommerce app offering a seamless shopping experience with secure payments, real-time order tracking, and a wide range of products at your fingertips.",
-  googlePlayLink: '',
+  googlePlayLink: 'In Development',
   thumbnail: '/png/yuunri.png'
 },
 {
