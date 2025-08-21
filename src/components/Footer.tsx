@@ -35,15 +35,7 @@ const Footer = () => {
             >
               <Linkedin size={20} />
             </a>
-            {/* <a
-              href="https://x.com/dawood_qurashi?s=09"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full bg-gray-100 dark:bg-dark-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter size={20} />
-            </a> */}
+
           </div>
         </div>
 
