@@ -1,47 +1,149 @@
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Heart, Coffee, Sparkles } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white dark:bg-dark-900 py-12 border-t border-gray-200 dark:border-dark-700">
-      <div className="container mx-auto px-4 md:px-6">
+    <footer className="bg-gradient-to-br from-neutral-900 via-dark-900 to-neutral-800 text-white py-16 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-secondary-500/10 to-accent-500/10 rounded-full filter blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Muhammad Adnan
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+          {/* Brand Section */}
+          <motion.div
+            className="mb-8 md:mb-0 text-center md:text-left"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+                <Sparkles className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+                Muhammad Adnan
+              </h3>
+            </div>
+            <p className="text-neutral-300 text-lg font-medium">
               Mobile App Developer
             </p>
-          </div>
+            <p className="text-neutral-400 text-sm mt-2 max-w-md">
+              Crafting beautiful, performant mobile experiences with Flutter and modern technologies.
+            </p>
+          </motion.div>
 
-          <div className="flex space-x-4 mb-6 md:mb-0">
-            <a
+          {/* Social Links */}
+          <motion.div
+            className="flex items-center space-x-4 mb-8 md:mb-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.a
               href="https://github.com/Dani-183"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-gray-100 dark:bg-dark-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="group relative p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-primary-400 transition-all duration-300"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               aria-label="GitHub"
             >
-              <Github size={20} />
-            </a>
-            <a
+              <Github size={20} className="text-neutral-300 group-hover:text-white transition-colors" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </motion.a>
+
+            <motion.a
               href="https://www.linkedin.com/in/adnan-moeen-128679209"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-gray-100 dark:bg-dark-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="group relative p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-blue-400 transition-all duration-300"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               aria-label="LinkedIn"
             >
-              <Linkedin size={20} />
-            </a>
+              <Linkedin size={20} className="text-neutral-300 group-hover:text-white transition-colors" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </motion.a>
+          </motion.div>
+        </div>
 
+        {/* Divider */}
+        <motion.div
+          className="border-t border-white/10 mt-12 pt-8"
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            {/* Copyright */}
+            <motion.p
+              className="text-neutral-400 text-sm mb-4 md:mb-0"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              © {currentYear} Muhammad Adnan. All rights reserved.
+            </motion.p>
+
+            {/* Made with Love */}
+            <motion.div
+              className="flex items-center space-x-2 text-neutral-400 text-sm"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <span>Made with</span>
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
+              >
+                <Heart className="w-4 h-4 text-red-400 fill-current" />
+              </motion.div>
+              <span>and</span>
+              <motion.div
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              >
+                <Coffee className="w-4 h-4 text-amber-400" />
+              </motion.div>
+              <span>in Pakistan</span>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="border-t border-gray-200 dark:border-dark-800 mt-8 pt-8 text-center text-gray-500 dark:text-gray-400 text-sm">
-          <p>© {currentYear} Muhammad Adnan. All rights reserved.</p>
-        </div>
+        {/* Back to Top */}
+        <motion.div
+          className="text-center mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
+          viewport={{ once: true }}
+        >
+          <motion.a
+            href="#home"
+            className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary-600/20 to-secondary-600/20 backdrop-blur-sm border border-primary-500/30 text-primary-300 hover:text-white rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-primary-600/40 hover:to-secondary-600/40"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="text-sm font-medium">Back to Top</span>
+            <motion.div
+              animate={{ y: [0, -3, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              ↑
+            </motion.div>
+          </motion.a>
+        </motion.div>
       </div>
     </footer>
   );

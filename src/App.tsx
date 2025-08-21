@@ -11,22 +11,36 @@ function App() {
     // Update page title
     document.title = "Muhammad Adnan | Mobile App Developer";
 
-    // Create placeholder SVG directories and files for development purposes
-    // These would be replaced with actual assets in production
-    const createPlaceholders = async () => {
-      try {
-        // This is just for development as the actual SVGs would be provided in production
-        console.log('In production, actual SVG files would be used instead of placeholders');
-      } catch (error) {
-        console.error('Error creating placeholders:', error);
+    // Smooth scrolling for anchor links
+    const handleSmoothScroll = (e: Event) => {
+      const target = e.target as HTMLAnchorElement;
+      if (target.hash) {
+        e.preventDefault();
+        const element = document.querySelector(target.hash);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
       }
     };
 
-    createPlaceholders();
+    // Add smooth scroll to all anchor links
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', handleSmoothScroll);
+    });
+
+    return () => {
+      links.forEach(link => {
+        link.removeEventListener('click', handleSmoothScroll);
+      });
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-dark-900 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-dark-900 text-neutral-900 dark:text-white overflow-x-hidden">
       <Header />
       <main>
         <Hero />
