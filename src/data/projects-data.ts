@@ -37,6 +37,5 @@ export const projectData: Project[] = [
 
 export const skills = {
   mobile: ['Flutter', 'Bloc State Management', 'Getx State Management', 'Provider State Management', 'Firebase (Authentication, Database, Cloud Messaging, Crashlytics, Analytics etc)', "RESTful APIs", 'One-Signal' , 'Agora SDK', 'Web-Socket Integration',  "Real-time Location Tracking ", "Marker Animation & Polylines" , "Google Maps SDK", "Geofence", "Tutorials", "Payment Integration (PayPal, Stripe, OZOW, PEACH, Kwik)", "Deep & Dynamic Linking", ],
-  backend: ['NestJS', 'TypeScript', 'PostgreSQL', 'RESTful APIs'],
   others: ['Git/GitHub', 'CI/CD', 'Agile Methodology', " Unit, Widget, and Integration Testing using Flutter’s built-in tools", "Profiling and Debugging", 'App Store Deployment & Management', 'Play Store Deployment & Management']
 };

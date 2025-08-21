@@ -98,18 +98,11 @@ const Skills = () => {
       delay: 0
     },
     {
-      title: "Backend Engineering",
-      icon: <Server size={28} />,
-      skills: skills.backend,
-      gradient: "from-secondary-500 to-secondary-600",
-      delay: 0.2
-    },
-    {
       title: "Other Skills",
       icon: <Code size={28} />,
       skills: skills.others,
       gradient: "from-accent-500 to-accent-600",
-      delay: 0.4
+      delay: 0.2
     }
   ];
 
@@ -169,7 +162,7 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {skillCategories.map((category) => (
             <SkillCategory
               key={category.title}
