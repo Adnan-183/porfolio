@@ -1,171 +1,221 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { projectData } from '../data/projects-data';
-import ProjectCard from './ProjectCard';
-import { Sparkles, Rocket, Code2, Zap, Star, ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
-import MagneticButton from './MagneticButton';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useState } from "react";
+import { projectData } from "../data/projects-data";
+import { Globe, Smartphone, ExternalLink } from "lucide-react";
+import Section from '../ui/Section';
+import Card from '../ui/Card';
+import Button from '../ui/Button';
+type Project = typeof projectData[number];
 
-const Projects = () => {
-  const ref = useRef<HTMLElement>(null);
-  const { ref: inViewRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
+const Projects: React.FC = () => {
+  const [filter, setFilter] = useState<"all" | "mobile" | "web" | "backend">(
+    "all"
+  );
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
+  const filteredProjects = projectData.filter(
+    (project) => filter === "all" || project.category === filter
+  );
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
+  const categories = [
+    { key: "all", label: "All Projects", icon: <Globe size={16} /> },
+    { key: "mobile", label: "Mobile Apps", icon: <Smartphone size={16} /> },
+    { key: "web", label: "Web Apps", icon: <Globe size={16} /> },
+    { key: "backend", label: "Backend", icon: <Globe size={16} /> },
+  ];
+
+  const getStatusColor = (status: Project["status"]) => {
+    switch (status) {
+      case "Published":
+        return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300";
+      case "In-Development":
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300";
+    }
+  };
+
+  const getWorkingColor = (status: Project["working"]) => {
+    switch (status) {
+      case "Feature Development":
+        return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300";
+      case "Self-Driven Project":
+        return "bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-300";
+      case "Worked within Agile Team":
+        return "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300";
+    }
+  };
 
   return (
-    <section
-      ref={ref}
+    <Section
       id="projects"
-      className="py-20 relative overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/20 to-purple-50/20 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+      title="Featured Projects"
+      subtitle="A showcase of mobile applications built with Flutter, integrated with scalable backend services"
+      background="white"
     >
-      {/* Simplified Background */}
-      <motion.div 
-        className="absolute inset-0 opacity-40"
-        style={{ y }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-emerald-500/5" />
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
-      </motion.div>
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10" ref={inViewRef}>
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
-        >
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center space-x-2 px-4 py-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border border-blue-200/50 dark:border-blue-700/50 rounded-full text-blue-600 dark:text-blue-400 font-semibold mb-6 shadow-lg"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+      {/* Filter Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {categories.map((category) => (
+          <Button
+            key={category.key}
+            variant={filter === category.key ? "primary" : "outline"}
+            size="sm"
+            onClick={() => setFilter(category.key as any)}
+            className="flex items-center gap-2"
           >
-            <Rocket className="w-4 h-4" />
-            <span>Featured Portfolio</span>
-            <Sparkles className="w-4 h-4" />
-          </motion.div>
+            {category.icon}
+            {category.label}
+          </Button>
+        ))}
+      </div>
 
-          {/* Title */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="block text-slate-800 dark:text-white mb-2">My Creative</span>
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
-              Projects
-            </span>
-          </h2>
-          
-          {/* Decorative Line */}
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <div className="h-1 w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
-            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-            <div className="h-1 w-20 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-full" />
-          </div>
-
-          {/* Description */}
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            A curated collection of mobile applications built with{' '}
-            <span className="text-blue-600 dark:text-blue-400 font-semibold">Flutter</span>
-            , featuring cutting-edge architecture and seamless user experiences.
-          </p>
-        </motion.div>
-
-        {/* Projects Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          {projectData.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: 0.6 + index * 0.1
-              }}
-            >
-              <ProjectCard project={project} index={index} />
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          className="text-center bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-3xl p-8 md:p-12 shadow-xl"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
-            <Rocket className="w-8 h-8 text-white" />
-          </div>
-
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4">
-            Ready to Build Something{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Extraordinary
-            </span>
-            ?
-          </h3>
-
-          <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-            Let's collaborate to transform your ideas into powerful mobile applications.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <MagneticButton>
-              <a
-                href="#contact"
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-2"
-              >
-                <span>Start Your Project</span>
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </MagneticButton>
-
-            <MagneticButton>
-              <a
-                href="#skills"
-                className="px-8 py-4 bg-white/20 dark:bg-white/10 backdrop-blur-xl text-slate-800 dark:text-white border-2 border-slate-300/30 hover:border-blue-500/50 font-bold text-lg rounded-2xl transition-all duration-300 shadow-lg flex items-center space-x-2"
-              >
-                <span>View My Skills</span>
-                <Sparkles className="w-5 h-5" />
-              </a>
-            </MagneticButton>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mt-10 max-w-lg mx-auto">
-            {[
-              { number: '12+', label: 'Apps Published' },
-              { number: '50+', label: 'Projects' },
-              { number: '100%', label: 'Success Rate' }
-            ].map((stat, index) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-1">
-                  {stat.number}
+      {/* Projects Grid */}
+      <motion.div
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {filteredProjects.map((project, index) => (
+          <motion.div
+            key={project.id}
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
+            <Card className="h-full flex flex-col overflow-hidden group">
+              {/* Project Image */}
+              <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 overflow-hidden">
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-300"
+                />
+                <div className="absolute top-4 right-4">
+                  <span
+                    className={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(
+                      project.status
+                    )}`}
+                  >
+                    {project.status}
+                  </span>
                 </div>
-                <div className="text-slate-600 dark:text-slate-400 text-sm font-medium">
-                  {stat.label}
+                {project.working && (
+                  <div className="absolute bottom-2 right-4">
+                    <span
+                      className={`px-2 py-1 text-xs font-medium rounded-full ${getWorkingColor(
+                        project.working
+                      )}`}
+                    >
+                      {project.working}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Project Content */}
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-3">
+                    {project.tech}
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Features */}
+                {project.features && project.features.length > 0 && (
+                  <div className="mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.features.slice(0, 3).map((feature) => (
+                        <span
+                          key={feature}
+                          className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                      {project.features.length > 3 && (
+                        <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded">
+                          +{project.features.length - 3} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Action Buttons */}
+                <div className="mt-auto flex flex-wrap gap-2">
+                  {project.links.googlePlay && (
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      href={project.links.googlePlay}
+                      external
+                      className="flex-1 min-w-0"
+                    >
+                      Play Store
+                    </Button>
+                  )}
+                  {project.links.appStore && (
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      href={project.links.appStore}
+                      external
+                      className="flex-1 min-w-0"
+                    >
+                      App Store
+                    </Button>
+                  )}
+                  {project.links.web && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      href={project.links.web}
+                      external
+                      className="flex-1 min-w-0 flex items-center gap-1"
+                    >
+                      <ExternalLink size={14} />
+                      Live
+                    </Button>
+                  )}
+                  {project.category !== "backend" &&
+                    !project.links.googlePlay &&
+                    !project.links.appStore &&
+                    !project.links.web && (
+                      <span className="text-sm text-gray-500 dark:text-gray-400 italic">
+                        {project.status === "Unpublished"
+                          ? "Unpublished"
+                          : "Coming Soon"}
+                      </span>
+                    )}
                 </div>
               </div>
-            ))}
-          </div>
+            </Card>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Empty State */}
+      {filteredProjects.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center py-12"
+        >
+          <p className="text-gray-500 dark:text-gray-400">
+            No projects found for the selected category.
+          </p>
         </motion.div>
-      </div>
-    </section>
+      )}
+    </Section>
   );
 };
 

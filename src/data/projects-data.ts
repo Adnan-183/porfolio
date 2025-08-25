@@ -1,96 +1,312 @@
 import { Project } from '../types';
 
+import { Project } from "../types";
+
 export const projectData: Project[] = [
+  {
+    id: "rentpe",
+    title: "RentPe",
+    description:
+      "Property rental platform connecting landlords and tenants with advanced search filters, virtual tours, and secure payment processing.",
+    tech: "Flutter • Bloc State Management",
+    thumbnail: "/png/rentpe.png",
+    category: "mobile",
+    status: "In Development",
+    working: "Self-Driven Project",
+    links: {
+      googlePlay: "",
+    },
+    features: [
+      "Property Listings",
+      "Advanced Filters",
+      "Virtual Tours",
+      "Secure Payments",
+    ],
+  },
+  {
+    id: "yuunri",
+    title: "Yuunri",
+    description:
+      "Modern eCommerce app offering seamless shopping, secure payments, and real-time order tracking with a wide range of products.",
+    tech: "Flutter • Bloc State Management",
+    thumbnail: "/png/yuunri.png",
+    category: "mobile",
+    status: "In Development",
+    working: "Self-Driven Project",
+    links: {
+      googlePlay: "",
+    },
+    features: [
+      "Product Catalog",
+      "Order Tracking",
+      "Payment Integration",
+      "User Profiles",
+    ],
+  },
+  {
+    id: "dawgpound",
+    title: "DawgPound",
+    description:
+      "Team management and sports scheduling app where owners create teams, add members, schedule matches, and communicate via group chat.",
+    tech: "Flutter • Bloc State Management",
+    thumbnail: "/png/dawgpound.png",
+    category: "mobile",
+    status: "In Development",
+    working: "Self-Driven Project",
+    links: {
+      googlePlay: "",
+    },
+    features: [
+      "Team Creation",
+      "Match Scheduling",
+      "Group Chat",
+      "Member Management",
+    ],
+  },
+  {
+    id: "zigu",
+    title: "Zigu",
+    description:
+      "Driver-focused logistics app for load creation, trip tracking, employment history, company assignments, and integrated health insurance options.",
+    tech: "Flutter • GetX State Management",
+    thumbnail: "/svg/zigu.svg",
+    category: "mobile",
+    status: "Published",
+    working: "Client Project",
+    links: {
+      googlePlay:
+        "https://play.google.com/store/apps/details?id=com.tiecodes.zigu_v2",
+      appStore:  "https://apps.apple.com/us/app/zigu/id6747668641"
+    },
+    features: [
+      "Trip Tracking",
+      "Employment History",
+      "Self & Company Loads",
+      "Health Insurance",
+    ],
+  },
+  {
+    id: "bridge-expedite",
+    title: "Bridge Expedite",
+    description:
+      "Smart logistics app connecting drivers and transporters through a bidding system, in-app navigation, and job tracking.",
+    tech: "Flutter • GetX State Management",
+    thumbnail: "/png/bridge_expedite.png",
+    category: "mobile",
+    status: "Published",
+    working: "Client Project",
+    links: {
+      googlePlay:
+        "https://play.google.com/store/apps/details?id=tiecodes.com.bridge_expedite",
+        appStore: "https://apps.apple.com/us/app/bridge-expedite/id6744370374",
+    },
+    features: [
+      "Smart Bidding",
+      "Job Tracking",
+      "Driver & Transporter Dashboards",
+      "Navigation Support",
+    ],
+  },
+  {
+    id: "utrack",
+    title: "Utrack",
+    description:
+      "Smart GPS tracking app for managing multiple devices, creating geofences, and receiving real-time alerts.",
+    tech: "Flutter • GetX State Management",
+    thumbnail: "/svg/utrack.svg",
+    category: "mobile",
+    status: "Published",
+    working: "Client Project",
+    links: {
+      googlePlay:
+        "https://play.google.com/store/apps/details?id=com.tiecodes.u_track",
 
-
-{
-  title: 'RentPe',
-  tech: 'Flutter (Bloc-State Management)',
-  description: "Property rental platform connecting landlords and tenants with advanced search filters, virtual tours, and secure payment processing.",
-  googlePlayLink: 'In Development',
-  thumbnail: '/png/rentpe.png'
-},
-{
-  title: 'Yuunri',
-  tech: 'Flutter (Bloc-State Management)',
-  description: "A modern eCommerce app offering a seamless shopping experience with secure payments, real-time order tracking, and a wide range of products at your fingertips.",
-  googlePlayLink: 'In Development',
-  thumbnail: '/png/yuunri.png'
-},
-{
-  title: 'DawgPound',
-  tech: 'Flutter (Bloc-State Management)',
-  description: "Dawgpound is an app where team owners can create and manage teams, add members, schedule matches, and stay connected through a built-in group chat.",
-  googlePlayLink: 'In Development',
-  thumbnail: '/png/dawgpound.png'
-},
-{
-  title: 'Zigu ',
-  tech: 'Flutter (Getx-State Management)',
-  description: "Zigu is a driver-focused app that enables load creation and complete trip tracking. Drivers can manage their profile, view employment history, work independently or under a company, and access trip reports with CV download options. The app also allows company-assigned loads, self-created loads, and offers integrated health insurance purchasing for drivers.",
-  googlePlayLink: 'https://play.google.com/store/apps/details?id=com.tiecodes.zigu_v2&pcampaignid=web_share',
-  thumbnail: '/svg/zigu.svg'
-},
-{
-  title: 'Bridge Expedite',
-  tech: 'Flutter (Getx-State Management)',
-  description: "Bridge Expedite is a driver-focused logistics app that connects drivers with transporters through a smart bidding system. Drivers can search and bid on available jobs, while transporters can accept or counter bids from their dashboard. Once a bid is confirmed, the load is assigned, and drivers can start the job with in-app navigation that guides them from pickup to drop-off.",
-  googlePlayLink: 'https://play.google.com/store/apps/details?id=tiecodes.com.bridge_expedite&pcampaignid=web_share',
-  thumbnail: '/png/bridge_expedite.png'
-},
-
-{
-  title: 'Utrack',
-  tech: 'Flutter (Getx-State Management)',
-  description: "Utrack is a smart tracking app that allows users to register, add their devices, and subscribe to a plan for real-time GPS tracking. Once set up, users can view their devices’ live locations on the map, add multiple devices such as family members, and create geofences to get alerts when a device enters or exits specific areas. The app also enables setting custom alerts for each device and viewing notifications from all connected devices within the account.",
-  googlePlayLink: 'https://play.google.com/store/apps/details?id=com.tiecodes.u_track&pcampaignid=web_share',
-  thumbnail: '/svg/utrack.svg'
-},
-{
-  title: 'Nutri Tech',
-  tech: 'Flutter (Getx-State Management)',
-  description: "Nutri Tech is a business management app that allows users to create a company, add representatives, and manage deals efficiently. Users can create deals, assign tasks either to themselves or other company representatives, and track progress in real time. The app also enables following users, managing profiles, and monitoring everything through a centralized dashboard for seamless business operations.",
-  googlePlayLink: '',
-  thumbnail: '/png/nutriTech.png'
-},
-{
-  title: 'Jewels Airport',
-  tech: 'Flutter (Getx-State Management)',
-  description: "Airport Jewels is a driver-centric logistics app where drivers register with a company and get approved before accessing jobs. Once approved, drivers can view available loads, place bids, and start jobs after bid acceptance. During active jobs, the app also provides in-app chat with customers for smooth communication and coordination.",
-  googlePlayLink: '',
-  thumbnail: '/png/jewelslogo.png'
-},
-{
-  title: 'Taxi2Cardiff',
-  tech: 'Flutter (Bloc-State Management)',
-  description: "Taxi2Cardif is a ride-hailing app built on a single codebase for both customers and drivers. Customers can create ride requests, while drivers view and accept jobs in real time. Once a ride is accepted, drivers complete the trip with integrated navigation and in-app communication.",
-  googlePlayLink: 'Airport Jewels is a driver-centric logistics app where drivers register with a company and get approved before accessing jobs. Once approved, drivers can view available loads, place bids, and start jobs after bid acceptance. During active jobs, the app also provides in-app chat with customers for smooth communication and coordination.',
-  thumbnail: '/png/taxi2Cardiff.png'
-},
-{
-  title: 'NowBy',
-  tech: 'Flutter (Getx-State Management)',
-  description: "NowBy is a location-based social networking app that lets users connect through posts, comments, and interactions near their area. After registering and logging in, users can explore a map-based feed of nearby posts, like and comment, tag friends, and reply to tagged comments. The app also enables sending invitations directly from the contact directory and notifies users when someone from their contacts joins the platform.",
-  googlePlayLink: '',
-  thumbnail: '/png/nowBy.jpg'
-},
-{
-  title: 'close By Jobs',
-  tech: 'Flutter (Getx-State Management)',
-  description: "Close By Job is a location-based job app that uses smart alerts to ensure tasks are completed at the pickup point without delays.",
-  googlePlayLink: 'https://play.google.com/store/apps/details?id=com.tiecodes.rent_ready_homes&pcampaignid=web_share',
-  thumbnail: '/png/closeByJob.jpeg'
-},
-{
-  title: 'SwipeLover - The Dating App',
-  tech: 'Flutter (Bloc-State Management)',
-  description: "SwipeLover is a social app for meeting new people through chatting, random match-based chats, and live streaming. With a focus on privacy and simplicity, it offers a fun, safe space to build real connections in real time.",
-  googlePlayLink: 'https://play.google.com/store/apps/details?id=com.swipelover.app',
-  thumbnail: '/svg/swipe.svg'
-},
-
-
+    },
+    features: [
+      "Real-Time Tracking",
+      "Multi-Device Support",
+      "Geofencing Alerts",
+      "Custom Notifications",
+    ],
+  },
+  {
+    id: "nutri-tech",
+    title: "Nutri Tech",
+    description:
+      "Business management app for companies to create deals, assign tasks, follow representatives, and monitor operations in real time.",
+    tech: "Flutter • GetX State Management",
+    thumbnail: "/png/nutriTech.png",
+    category: "mobile",
+    status: "Unpublished",
+    working: "Client Project",
+    links: {},
+    features: [
+      "Deal Management",
+      "Task Assignment",
+      "Profile Management",
+      "Centralized Dashboard",
+    ],
+  },
+  {
+    id: "jewels-airport",
+    title: "Jewels Airport",
+    description:
+      "Driver-centric logistics platform where drivers register, bid on loads, and communicate with customers through in-app chat.",
+    tech: "Flutter • GetX State Management",
+    thumbnail: "/png/jewelslogo.png",
+    category: "mobile",
+    status: "Published",
+    working: "Client Project",
+    links: {
+        googlePlay: "https://play.google.com/store/apps/details?id=com.tiecodes.jat&pcampaignid=web_share",
+        appStore: "https://apps.apple.com/pk/app/jewels-airport-transfer/id6747810384"
+        },
+    features: [
+      "Driver Registration",
+      "Job Bidding",
+      "Load Management",
+      "In-App Chat",
+    ],
+  },
+  {
+    id: "taxi2cardiff",
+    title: "Taxi2Cardiff",
+    description:
+      "Ride-hailing app with dual roles for customers and drivers, including ride requests, trip navigation, and in-app communication.",
+    tech: "Flutter • Bloc State Management",
+    thumbnail: "/png/taxi2Cardiff.png",
+    category: "mobile",
+    status: "Published",
+    working: "Client Project",
+    links: {
+        googlePlay: "https://play.google.com/store/apps/details?id=com.taxi2cardiff.taxi2cardiff&pcampaignid=web_share",
+        appStore: "https://apps.apple.com/us/app/taxi2cardiff/id1546997921"
+        },
+    features: [
+      "Ride Booking",
+      "Driver Dashboard",
+      "Trip Navigation",
+      "In-App Chat",
+    ],
+  },
+  {
+    id: "nowby",
+    title: "NowBy",
+    description:
+      "Location-based social networking app for sharing posts, comments, and interactions mapped to nearby users with contact integration.",
+    tech: "Flutter • GetX State Management",
+    thumbnail: "/png/nowBy.jpg",
+    category: "mobile",
+    status: "Unpublished",
+    working: "Self-Driven Project",
+    links: {},
+    features: [
+      "Map-Based Feed",
+      "Post Interactions",
+      "Tagged Comments",
+      "Contact Invitations",
+    ],
+  },
+  {
+    id: "closeby-jobs",
+    title: "Close By Jobs",
+    description:
+      "Location-based job platform with smart alerts to ensure tasks are completed on-site without delays.",
+    tech: "Flutter • GetX State Management",
+    thumbnail: "/png/closeByJob.jpeg",
+    category: "mobile",
+    status: "Published",
+    working: "Client Project",
+    links: {
+      googlePlay:
+        "https://play.google.com/store/apps/details?id=com.tiecodes.rent_ready_homes",
+        appStore: "https://apps.apple.com/us/app/close-by-jobs/id6502640202",
+    },
+    features: ["Job Alerts", "Location Validation", "Task Management"],
+  },
+  {
+    id: "yabiso car",
+    title: "Ya Biso Car",
+    description:
+      "Ride-booking concept app with dual roles for riders and drivers, including real-time location tracking and trip logs.",
+    tech: "Flutter • GetX State Management • Live Tracking",
+    thumbnail: "/png/eagles_car.png",
+    category: "mobile",
+    status: "Unpublished",
+    working: "Self-Driven Project",
+    links: {},
+    features: [
+      "Real-Time Tracking",
+      "Route Visualization",
+      "Geo-Fencing Alerts",
+      "Trip History",
+    ],
+  },
+  {
+    id: "cleany-user",
+    title: "Cleany User App",
+    description:
+      "On-demand cleaning service app for booking trusted cleaners with booking management, payments, and reviews.",
+    tech: "Flutter • GetX State Management • Stripe Payments",
+    thumbnail: "/png/cleany.png",
+    category: "mobile",
+    status: "Published",
+    working: "Self-Driven Project",
+   links: {
+         googlePlay:
+           "https://play.google.com/store/apps/details?id=com.cleany.user",
+         appStore: "https://apps.apple.com/us/app/book-cleany/id6448805647",
+       },
+    features: [
+      "Booking Management",
+      "Payment Processing",
+      "User Profiles",
+      "Service Reviews",
+    ],
+  },
+  {
+    id: "cleany-professional",
+    title: "Cleany Professional App",
+    description:
+      "Professional cleaning app for cleaners to manage jobs, schedules, earnings, and client communication.",
+    tech: "Flutter • GetX State Management • Stripe Payments",
+    thumbnail: "/png/cleany.png",
+    category: "mobile",
+    status: "Published",
+    working: "Self-Driven Project",
+    links: {
+          googlePlay:
+            "https://play.google.com/store/apps/details?id=com.cleany.cleaner",
+          appStore: "https://apps.apple.com/us/app/cleany-cleaner/id6448806557",
+        },
+    features: [
+      "Job Management",
+      "Earnings Tracking",
+      "Schedule Management",
+      "Client Communication",
+    ],
+  },
+  {
+    id: "msn",
+    title: "MSN-PNG",
+    description:
+      "Event management and ticketing platform for South Africa, enabling organizers to create, promote, and manage events with secure digital ticketing.",
+    tech: "Flutter • GetX State Management • Secure Payments • QR Code Ticketing",
+    thumbnail: "/png/mspng.png",
+    category: "mobile",
+    status: "Unpublished",
+    working: "Self-Driven Project",
+    links: {},
+    features: [
+      "Event Creation",
+      "Ticket Management",
+      "User Registration",
+      "Payment Integration",
+      "QR Ticketing",
+    ],
+  },
 ];
+
 
 export const skills = {
   mobile: ['Flutter', 'Bloc State Management', 'Getx State Management', 'Provider State Management', 'Firebase (Authentication, Database, Cloud Messaging, Crashlytics, Analytics etc)', "RESTful APIs", 'One-Signal' , 'Agora SDK', 'Web-Socket Integration',  "Real-time Location Tracking ", "Marker Animation & Polylines" , "Google Maps SDK", "Geofence", "Tutorials", "Payment Integration (PayPal, Stripe, OZOW, PEACH, Kwik)", "Deep & Dynamic Linking", ],
