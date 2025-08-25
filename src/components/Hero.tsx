@@ -209,7 +209,7 @@ const Hero = () => {
           >
             {[
               { number: '50+', label: 'Projects', icon: Rocket },
-              { number: '3+', label: 'Years Exp', icon: Star },
+              { number: '2+', label: 'Years Exp', icon: Star },
               { number: '100%', label: 'Success Rate', icon: Sparkles }
             ].map((stat, index) => (
               <motion.div
@@ -232,26 +232,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
-      >
-        <a
-          href="#projects"
-          className="flex flex-col items-center text-slate-500 hover:text-blue-600 transition-colors group"
-        >
-          <span className="text-sm mb-2 font-medium">Scroll Down</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <ArrowDown size={20} />
-          </motion.div>
-        </a>
-      </motion.div>
+
     </section>
   );
 };

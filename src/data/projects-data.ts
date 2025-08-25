@@ -90,7 +90,7 @@ export const projectData: Project[] = [
     title: "Bridge Expedite",
     description:
       "Smart logistics app connecting drivers and transporters through a bidding system, in-app navigation, and job tracking.",
-    tech: "Flutter • GetX State Management • Live Location Tracking,"
+    tech: "Flutter • GetX State Management • Live Location Tracking",
     thumbnail: "/png/bridge_expedite.png",
     category: "mobile",
     status: "Published",
