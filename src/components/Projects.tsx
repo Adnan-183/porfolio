@@ -19,9 +19,6 @@ const Projects: React.FC = () => {
 
   const categories = [
     { key: "all", label: "All Projects", icon: <Globe size={16} /> },
-    { key: "mobile", label: "Mobile Apps", icon: <Smartphone size={16} /> },
-    { key: "web", label: "Web Apps", icon: <Globe size={16} /> },
-    { key: "backend", label: "Backend", icon: <Globe size={16} /> },
   ];
 
   const getStatusColor = (status: Project["status"]) => {
