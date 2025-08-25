@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, Sparkles, Code, Smartphone, Zap, Star, Rocket } from 'lucide-react';
+import { ArrowDown, Sparkles, Code, Smartphone, Zap, Star, Rocket, Download } from 'lucide-react';
 import { useRef } from 'react';
 import MagneticButton from './MagneticButton';
 
@@ -17,9 +17,8 @@ const FloatingElement = ({
   <motion.div
     className={className}
     animate={{
-      y: [0, -30, 0],
-      rotate: [0, 10, -10, 0],
-      scale: [1, 1.1, 1],
+      y: [0, -20, 0],
+      rotate: [0, 5, -5, 0],
     }}
     transition={{
       duration,
@@ -32,19 +31,6 @@ const FloatingElement = ({
   </motion.div>
 );
 
-const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
-  return (
-    <motion.span
-      initial={{ width: 0 }}
-      animate={{ width: "auto" }}
-      transition={{ duration: 2, delay, ease: "easeInOut" }}
-      className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-primary-500"
-    >
-      {text}
-    </motion.span>
-  );
-};
-
 const Hero = () => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -52,128 +38,67 @@ const Hero = () => {
     offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
     <section
       ref={ref}
       id="home"
-      className="relative min-h-screen flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
     >
-      {/* Advanced Background */}
+      {/* Optimized Background */}
       <motion.div 
-        className="absolute inset-0"
+        className="absolute inset-0 opacity-60"
         style={{ y, opacity }}
       >
-        {/* Neural Network Background */}
-        <div className="absolute inset-0 bg-neural-network opacity-30" />
+        {/* Simplified gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-emerald-500/10" />
         
-        {/* Animated Gradient Mesh */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              "radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(217, 70, 239, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)",
-              "radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(217, 70, 239, 0.1) 0%, transparent 50%), radial-gradient(circle at 60% 60%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)",
-              "radial-gradient(circle at 40% 60%, rgba(14, 165, 233, 0.1) 0%, transparent 50%), radial-gradient(circle at 60% 40%, rgba(217, 70, 239, 0.1) 0%, transparent 50%), radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)",
-            ]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-        />
-
-        {/* Morphing Shapes */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary-400/20 to-secondary-400/20 blur-3xl"
-          animate={{ 
-            borderRadius: ["60% 40% 30% 70% / 60% 30% 70% 40%", "30% 60% 70% 40% / 50% 60% 30% 60%", "60% 40% 30% 70% / 60% 30% 70% 40%"],
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-secondary-400/20 to-accent-400/20 blur-3xl"
-          animate={{ 
-            borderRadius: ["30% 60% 70% 40% / 50% 60% 30% 60%", "60% 40% 30% 70% / 60% 30% 70% 40%", "30% 60% 70% 40% / 50% 60% 30% 60%"],
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Grid Pattern */}
+        {/* Grid pattern */}
         <div 
-          className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)',
-            backgroundSize: '50px 50px'
+            backgroundSize: '40px 40px'
           }}
         />
       </motion.div>
 
-      {/* Floating Tech Icons */}
-      <div className="absolute inset-0 pointer-events-none">
-        <FloatingElement delay={0} duration={12} className="absolute top-1/4 left-1/6">
-          <motion.div 
-            className="w-16 h-16 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-3xl flex items-center justify-center backdrop-blur-sm border border-white/10"
-            whileHover={{ scale: 1.2, rotate: 15 }}
-          >
-            <Code className="w-8 h-8 text-primary-600 dark:text-primary-400" />
-          </motion.div>
+      {/* Floating Tech Icons - Hidden on mobile for performance */}
+      <div className="absolute inset-0 pointer-events-none hidden md:block">
+        <FloatingElement delay={0} duration={8} className="absolute top-1/4 left-1/6">
+          <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+            <Code className="w-6 h-6 text-blue-600" />
+          </div>
         </FloatingElement>
         
-        <FloatingElement delay={2} duration={15} className="absolute top-1/3 right-1/6">
-          <motion.div 
-            className="w-16 h-16 bg-gradient-to-br from-secondary-500/20 to-accent-500/20 rounded-3xl flex items-center justify-center backdrop-blur-sm border border-white/10"
-            whileHover={{ scale: 1.2, rotate: -15 }}
-          >
-            <Smartphone className="w-8 h-8 text-secondary-600 dark:text-secondary-400" />
-          </motion.div>
+        <FloatingElement delay={2} duration={10} className="absolute top-1/3 right-1/6">
+          <div className="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+            <Smartphone className="w-6 h-6 text-purple-600" />
+          </div>
         </FloatingElement>
         
-        <FloatingElement delay={4} duration={18} className="absolute bottom-1/3 left-1/3">
-          <motion.div 
-            className="w-16 h-16 bg-gradient-to-br from-accent-500/20 to-primary-500/20 rounded-3xl flex items-center justify-center backdrop-blur-sm border border-white/10"
-            whileHover={{ scale: 1.2, rotate: 15 }}
-          >
-            <Sparkles className="w-8 h-8 text-accent-600 dark:text-accent-400" />
-          </motion.div>
-        </FloatingElement>
-
-        <FloatingElement delay={1} duration={10} className="absolute top-1/2 right-1/3">
-          <motion.div 
-            className="w-12 h-12 bg-gradient-to-br from-primary-500/15 to-accent-500/15 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10"
-            whileHover={{ scale: 1.3, rotate: -20 }}
-          >
-            <Zap className="w-6 h-6 text-primary-500" />
-          </motion.div>
-        </FloatingElement>
-
-        <FloatingElement delay={3} duration={14} className="absolute bottom-1/4 right-1/5">
-          <motion.div 
-            className="w-12 h-12 bg-gradient-to-br from-secondary-500/15 to-primary-500/15 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10"
-            whileHover={{ scale: 1.3, rotate: 25 }}
-          >
-            <Star className="w-6 h-6 text-secondary-500" />
-          </motion.div>
+        <FloatingElement delay={4} duration={12} className="absolute bottom-1/3 left-1/3">
+          <div className="w-12 h-12 bg-emerald-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+            <Sparkles className="w-6 h-6 text-emerald-600" />
+          </div>
         </FloatingElement>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Profile Section */}
           <motion.div
-            className="mb-16 relative inline-block"
-            initial={{ opacity: 0, scale: 0.5, y: 100 }}
+            className="mb-12 relative inline-block"
+            initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="relative">
               {/* Profile Image */}
               <motion.div
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 dark:border-white/10 shadow-2xl relative z-10 mx-auto"
+                className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl relative z-10 mx-auto"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
@@ -181,43 +106,26 @@ const Hero = () => {
                   src="/images/mypic.jpeg"
                   alt="Muhammad Adnan - Mobile App Developer"
                   className="w-full h-full object-cover"
+                  loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-500/20 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 via-transparent to-transparent" />
               </motion.div>
               
-              {/* Animated Rings */}
+              {/* Animated Ring */}
               <motion.div
-                className="absolute inset-0 rounded-full border-2 border-gradient-to-r from-primary-500 via-secondary-500 to-accent-500"
+                className="absolute inset-0 rounded-full border-2 border-blue-500/50"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
               
-              <motion.div
-                className="absolute inset-[-10px] rounded-full border border-primary-400/30"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              />
-
-              {/* Glow Effect */}
-              <motion.div
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500/30 via-secondary-500/30 to-accent-500/30 blur-2xl"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity }}
-              />
-              
               {/* Status Indicator */}
               <motion.div
-                className="absolute -bottom-4 -right-4 bg-gradient-to-r from-green-400 to-green-500 p-4 rounded-full shadow-xl z-20 border-4 border-white dark:border-dark-900"
+                className="absolute -bottom-2 -right-2 bg-green-500 p-3 rounded-full shadow-xl z-20 border-4 border-white dark:border-slate-900"
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                whileHover={{ scale: 1.2 }}
               >
-                <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
-                  <motion.div
-                    className="w-3 h-3 rounded-full bg-green-500"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  />
+                <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-green-500" />
                 </div>
               </motion.div>
             </div>
@@ -225,189 +133,97 @@ const Hero = () => {
 
           {/* Main Heading */}
           <motion.div
-            className="mb-12"
-            initial={{ opacity: 0, y: 50 }}
+            className="mb-8"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <motion.h1 
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-              <motion.span 
-                className="block text-neutral-800 dark:text-white mb-4"
-                initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-              >
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+              <span className="block text-slate-800 dark:text-white mb-2">
                 Mobile App
-              </motion.span>
-              <motion.span
-                className="block bg-gradient-to-r from-primary-600 via-secondary-600 to-accent-600 bg-clip-text text-transparent"
-                style={{ backgroundSize: '200% 200%' }}
-                animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                transition={{ duration: 5, repeat: Infinity }}
-                initial={{ x: 100, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-              >
-                <TypewriterText text="Developer" delay={1.2} />
-              </motion.span>
-            </motion.h1>
+              </span>
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
+                Developer
+              </span>
+            </h1>
             
             {/* Decorative Elements */}
-            <motion.div
-              className="flex items-center justify-center space-x-4 mt-8"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1.5 }}
-            >
-              <motion.div 
-                className="h-1 w-20 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"
-                animate={{ scaleX: [0, 1] }}
-                transition={{ duration: 1, delay: 1.8 }}
-              />
-              <motion.div
-                animate={{ rotate: 360, scale: [1, 1.2, 1] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <Rocket className="w-8 h-8 text-primary-600 dark:text-primary-400" />
-              </motion.div>
-              <motion.div 
-                className="h-1 w-20 bg-gradient-to-r from-secondary-500 to-accent-500 rounded-full"
-                animate={{ scaleX: [0, 1] }}
-                transition={{ duration: 1, delay: 1.8 }}
-              />
-            </motion.div>
+            <div className="flex items-center justify-center space-x-4 mt-6">
+              <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" />
+              <Rocket className="w-6 h-6 text-blue-600" />
+              <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-full" />
+            </div>
           </motion.div>
 
           {/* Description */}
           <motion.div
-            className="mb-16"
-            initial={{ opacity: 0, y: 30 }}
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <p className="text-xl md:text-2xl lg:text-3xl text-neutral-600 dark:text-neutral-300 max-w-5xl mx-auto leading-relaxed font-light">
-              I craft <motion.span 
-                className="text-primary-600 dark:text-primary-400 font-semibold"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                exceptional
-              </motion.span>, 
-              <motion.span 
-                className="text-secondary-600 dark:text-secondary-400 font-semibold"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {" "}innovative
-              </motion.span>, and 
-              <motion.span 
-                className="text-accent-600 dark:text-accent-400 font-semibold"
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {" "}performant
-              </motion.span> cross-platform mobile applications using Flutter. 
-              Specializing in clean architecture, advanced state management, and creating 
-              seamless user experiences that drive real business impact.
+            <p className="text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              I craft <span className="text-blue-600 font-semibold">exceptional</span>, 
+              <span className="text-purple-600 font-semibold"> innovative</span>, and 
+              <span className="text-emerald-600 font-semibold"> performant</span> cross-platform 
+              mobile applications using Flutter. Specializing in clean architecture and creating 
+              seamless user experiences.
             </p>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row justify-center items-center gap-8 mb-20"
-            initial={{ opacity: 0, y: 30 }}
+            className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-16"
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             <MagneticButton>
-              <motion.a
+              <a
                 href="#projects"
-                className="group relative px-10 py-5 bg-gradient-to-r from-primary-600 via-secondary-600 to-accent-600 text-white font-bold text-lg rounded-2xl overflow-hidden shadow-2xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                style={{ backgroundSize: '200% 200%' }}
-                animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                transition={{ duration: 3, repeat: Infinity }}
+                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-3"
               >
-                <span className="relative z-10 flex items-center space-x-3">
-                  <span>Explore My Work</span>
-                  <motion.div
-                    animate={{ x: [0, 10, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ArrowDown className="w-6 h-6 rotate-[-90deg]" />
-                  </motion.div>
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-accent-600 via-primary-600 to-secondary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  animate={{ backgroundPosition: ['100% 50%', '0% 50%', '100% 50%'] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </motion.a>
+                <span>Explore My Work</span>
+                <ArrowDown className="w-5 h-5 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
+              </a>
             </MagneticButton>
             
             <MagneticButton>
-              <motion.a
-                href="#contact"
-                className="group relative px-10 py-5 bg-white/10 dark:bg-white/5 backdrop-blur-xl text-neutral-800 dark:text-white border-2 border-neutral-300/30 dark:border-neutral-600/30 hover:border-primary-500/50 dark:hover:border-primary-400/50 font-bold text-lg rounded-2xl transition-all duration-500 shadow-xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <a
+                href="/pdf/Adnan Moeen.pdf"
+                download
+                className="group px-8 py-4 bg-white/20 backdrop-blur-xl text-slate-800 dark:text-white border-2 border-slate-300/30 hover:border-blue-500/50 font-bold text-lg rounded-2xl transition-all duration-300 shadow-lg flex items-center space-x-3"
               >
-                <span className="relative z-10 flex items-center space-x-3">
-                  <span>Let's Connect</span>
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <Sparkles className="w-6 h-6" />
-                  </motion.div>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-secondary-500/10 to-accent-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-              </motion.a>
+                <Download className="w-5 h-5" />
+                <span>Download CV</span>
+              </a>
             </MagneticButton>
           </motion.div>
 
-          {/* Enhanced Stats */}
+          {/* Stats */}
           <motion.div
-            className="grid grid-cols-3 gap-8 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 50 }}
+            className="grid grid-cols-3 gap-6 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
             {[
-              { number: '50+', label: 'Projects Delivered', icon: Rocket },
-              { number: '3+', label: 'Years Experience', icon: Star },
-              { number: '100%', label: 'Client Satisfaction', icon: Sparkles }
+              { number: '50+', label: 'Projects', icon: Rocket },
+              { number: '3+', label: 'Years Exp', icon: Star },
+              { number: '100%', label: 'Success Rate', icon: Sparkles }
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
                 className="text-center group"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <motion.div
-                  className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/10 group-hover:shadow-glow transition-all duration-300"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <stat.icon className="w-8 h-8 text-primary-600 dark:text-primary-400" />
-                </motion.div>
-                <motion.div
-                  className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 1.6 + index * 0.1 }}
-                >
+                <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl flex items-center justify-center">
+                  <stat.icon className="w-6 h-6 text-blue-600" />
+                </div>
+                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-1">
                   {stat.number}
-                </motion.div>
-                <div className="text-neutral-600 dark:text-neutral-400 font-medium">
+                </div>
+                <div className="text-slate-600 dark:text-slate-400 text-sm font-medium">
                   {stat.label}
                 </div>
               </motion.div>
@@ -416,39 +232,25 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
+        transition={{ duration: 0.8, delay: 1.5 }}
       >
-        <MagneticButton>
-          <a
-            href="#projects"
-            className="flex flex-col items-center text-neutral-500 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group"
+        <a
+          href="#projects"
+          className="flex flex-col items-center text-slate-500 hover:text-blue-600 transition-colors group"
+        >
+          <span className="text-sm mb-2 font-medium">Scroll Down</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
-            <motion.span 
-              className="text-sm mb-3 font-medium"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Discover More
-            </motion.span>
-            <motion.div
-              className="relative"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <ArrowDown size={24} className="group-hover:text-primary-600 dark:group-hover:text-primary-400" />
-              <motion.div
-                className="absolute inset-0 bg-primary-500/20 rounded-full blur-lg"
-                animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </motion.div>
-          </a>
-        </MagneticButton>
+            <ArrowDown size={20} />
+          </motion.div>
+        </a>
       </motion.div>
     </section>
   );

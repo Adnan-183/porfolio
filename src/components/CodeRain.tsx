@@ -13,16 +13,17 @@ const CodeRain = () => {
   const [codeChars, setCodeChars] = useState<CodeChar[]>([]);
 
   useEffect(() => {
-    const chars = ['0', '1', '{', '}', '<', '>', '/', '=', ';', '(', ')', '[', ']', '+', '-', '*'];
+    // Reduce characters for better mobile performance
+    const chars = ['0', '1', '{', '}', '<', '>', '/', '=', ';', '(', ')', '[', ']'];
     const newChars: CodeChar[] = [];
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 15; i++) {
       newChars.push({
         id: i,
         char: chars[Math.floor(Math.random() * chars.length)],
         x: Math.random() * 100,
         delay: Math.random() * 5,
-        duration: Math.random() * 10 + 15,
+        duration: Math.random() * 8 + 12,
       });
     }
 
@@ -34,7 +35,7 @@ const CodeRain = () => {
       {codeChars.map((char) => (
         <motion.div
           key={char.id}
-          className="absolute text-primary-500 font-mono text-sm"
+          className="absolute text-blue-500 font-mono text-sm"
           style={{
             left: `${char.x}%`,
             top: '-10%',

@@ -15,11 +15,11 @@ const MagneticButton = ({ children, className = '', onClick, href, target, rel }
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const springX = useSpring(x, { stiffness: 300, damping: 30 });
-  const springY = useSpring(y, { stiffness: 300, damping: 30 });
+  const springX = useSpring(x, { stiffness: 200, damping: 20 });
+  const springY = useSpring(y, { stiffness: 200, damping: 20 });
 
-  const rotateX = useTransform(springY, [-50, 50], [10, -10]);
-  const rotateY = useTransform(springX, [-50, 50], [-10, 10]);
+  const rotateX = useTransform(springY, [-30, 30], [5, -5]);
+  const rotateY = useTransform(springX, [-30, 30], [-5, 5]);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -28,8 +28,8 @@ const MagneticButton = ({ children, className = '', onClick, href, target, rel }
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    x.set((e.clientX - centerX) * 0.3);
-    y.set((e.clientY - centerY) * 0.3);
+    x.set((e.clientX - centerX) * 0.2);
+    y.set((e.clientY - centerY) * 0.2);
   };
 
   const handleMouseLeave = () => {

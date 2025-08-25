@@ -41,52 +41,16 @@ function App() {
       img.src = src;
     });
 
-    // Add custom cursor effect
-    const cursor = document.createElement('div');
-    cursor.className = 'fixed w-6 h-6 bg-primary-500/20 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out';
-    cursor.style.transform = 'translate(-50%, -50%)';
-    document.body.appendChild(cursor);
-
-    const updateCursor = (e: MouseEvent) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    };
-
-    const scaleCursor = () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(2)';
-    };
-
-    const resetCursor = () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-    };
-
-    document.addEventListener('mousemove', updateCursor);
-    
-    // Add cursor effects to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, [role="button"]');
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', scaleCursor);
-      el.addEventListener('mouseleave', resetCursor);
-    });
-
     return () => {
       links.forEach(link => {
         link.removeEventListener('click', handleSmoothScroll);
       });
-      document.removeEventListener('mousemove', updateCursor);
-      interactiveElements.forEach(el => {
-        el.removeEventListener('mouseenter', scaleCursor);
-        el.removeEventListener('mouseleave', resetCursor);
-      });
-      if (cursor.parentNode) {
-        cursor.parentNode.removeChild(cursor);
-      }
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-dark-900 text-neutral-900 dark:text-white overflow-x-hidden relative">
-      {/* Background Effects */}
+    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white overflow-x-hidden relative">
+      {/* Background Effects - Optimized for performance */}
       <ParticleSystem />
       <CodeRain />
       
@@ -99,11 +63,6 @@ function App() {
         <Contact />
       </main>
       <Footer />
-      
-      {/* Performance Optimization */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary-500/[0.02] to-transparent" />
-      </div>
     </div>
   );
 }

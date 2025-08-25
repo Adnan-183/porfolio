@@ -15,17 +15,18 @@ const ParticleSystem = () => {
   const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    const colors = ['#0ea5e9', '#d946ef', '#10b981', '#f59e0b'];
+    // Reduce particles for better mobile performance
+    const colors = ['#3b82f6', '#8b5cf6', '#10b981'];
     const newParticles: Particle[] = [];
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 20; i++) {
       newParticles.push({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 4 + 1,
+        size: Math.random() * 3 + 1,
         color: colors[Math.floor(Math.random() * colors.length)],
-        duration: Math.random() * 20 + 10,
+        duration: Math.random() * 15 + 10,
         delay: Math.random() * 5,
       });
     }
@@ -34,11 +35,11 @@ const ParticleSystem = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-20 dark:opacity-30">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full opacity-20"
+          className="absolute rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -47,9 +48,9 @@ const ParticleSystem = () => {
             backgroundColor: particle.color,
           }}
           animate={{
-            y: [0, -100],
-            opacity: [0.2, 0.5, 0],
-            scale: [1, 1.5, 0],
+            y: [0, -50],
+            opacity: [0.3, 0.7, 0],
+            scale: [1, 1.2, 0],
           }}
           transition={{
             duration: particle.duration,
