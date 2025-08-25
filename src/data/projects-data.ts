@@ -12,7 +12,7 @@ export const projectData: Project[] = [
     thumbnail: "/png/rentpe.png",
     category: "mobile",
     status: "In Development",
-    working: "Self-Driven Project",
+    working: "Feature Development",
     links: {
       googlePlay: "",
     },
@@ -48,7 +48,7 @@ export const projectData: Project[] = [
     title: "DawgPound",
     description:
       "Team management and sports scheduling app where owners create teams, add members, schedule matches, and communicate via group chat.",
-    tech: "Flutter • Bloc State Management",
+    tech: "Flutter • Bloc State Management •Firebase Integration •Stripe Payment",
     thumbnail: "/png/dawgpound.png",
     category: "mobile",
     status: "In Development",
@@ -68,11 +68,11 @@ export const projectData: Project[] = [
     title: "Zigu",
     description:
       "Driver-focused logistics app for load creation, trip tracking, employment history, company assignments, and integrated health insurance options.",
-    tech: "Flutter • GetX State Management",
+    tech: "Flutter • GetX State Management • Live Location Tracking • Firebase Integration • PEACH Payments • OZOW Payments • 100+ downloads • Huawei AppGallery",
     thumbnail: "/svg/zigu.svg",
     category: "mobile",
     status: "Published",
-    working: "Client Project",
+    working: "Self-Driven Project",
     links: {
       googlePlay:
         "https://play.google.com/store/apps/details?id=com.tiecodes.zigu_v2",
@@ -90,11 +90,11 @@ export const projectData: Project[] = [
     title: "Bridge Expedite",
     description:
       "Smart logistics app connecting drivers and transporters through a bidding system, in-app navigation, and job tracking.",
-    tech: "Flutter • GetX State Management",
+    tech: "Flutter • GetX State Management • Live Location Tracking,"
     thumbnail: "/png/bridge_expedite.png",
     category: "mobile",
     status: "Published",
-    working: "Client Project",
+    working: "Self-Driven Project",
     links: {
       googlePlay:
         "https://play.google.com/store/apps/details?id=tiecodes.com.bridge_expedite",
@@ -112,11 +112,11 @@ export const projectData: Project[] = [
     title: "Utrack",
     description:
       "Smart GPS tracking app for managing multiple devices, creating geofences, and receiving real-time alerts.",
-    tech: "Flutter • GetX State Management",
+    tech: "Flutter • GetX State Management • Geofence Implementation • Live Location Tracking • PayPal Payments ",
     thumbnail: "/svg/utrack.svg",
     category: "mobile",
     status: "Published",
-    working: "Client Project",
+    working: "Self-Driven Project",
     links: {
       googlePlay:
         "https://play.google.com/store/apps/details?id=com.tiecodes.u_track",
@@ -131,14 +131,14 @@ export const projectData: Project[] = [
   },
   {
     id: "nutri-tech",
-    title: "Nutri Tech",
+    title: "NutriTech",
     description:
       "Business management app for companies to create deals, assign tasks, follow representatives, and monitor operations in real time.",
     tech: "Flutter • GetX State Management",
     thumbnail: "/png/nutriTech.png",
     category: "mobile",
     status: "Unpublished",
-    working: "Client Project",
+    working: "Self-Driven Project",
     links: {},
     features: [
       "Deal Management",
@@ -156,7 +156,7 @@ export const projectData: Project[] = [
     thumbnail: "/png/jewelslogo.png",
     category: "mobile",
     status: "Published",
-    working: "Client Project",
+    working: "Self-Driven Project",
     links: {
         googlePlay: "https://play.google.com/store/apps/details?id=com.tiecodes.jat&pcampaignid=web_share",
         appStore: "https://apps.apple.com/pk/app/jewels-airport-transfer/id6747810384"
@@ -173,11 +173,11 @@ export const projectData: Project[] = [
     title: "Taxi2Cardiff",
     description:
       "Ride-hailing app with dual roles for customers and drivers, including ride requests, trip navigation, and in-app communication.",
-    tech: "Flutter • Bloc State Management",
+    tech: "Flutter • Bloc State Management • Live Location Tracking • Firebase Integration • PayPal Payments • 1,000+ downloads • Huawei AppGallery",
     thumbnail: "/png/taxi2Cardiff.png",
     category: "mobile",
     status: "Published",
-    working: "Client Project",
+    working: "Feature Development",
     links: {
         googlePlay: "https://play.google.com/store/apps/details?id=com.taxi2cardiff.taxi2cardiff&pcampaignid=web_share",
         appStore: "https://apps.apple.com/us/app/taxi2cardiff/id1546997921"
@@ -212,11 +212,11 @@ export const projectData: Project[] = [
     title: "Close By Jobs",
     description:
       "Location-based job platform with smart alerts to ensure tasks are completed on-site without delays.",
-    tech: "Flutter • GetX State Management",
+    tech: "Flutter • GetX State Management • Geofence alerts • Firebase Integration",
     thumbnail: "/png/closeByJob.jpeg",
     category: "mobile",
     status: "Published",
-    working: "Client Project",
+    working: "Self-Driven Project",
     links: {
       googlePlay:
         "https://play.google.com/store/apps/details?id=com.tiecodes.rent_ready_homes",
@@ -251,7 +251,7 @@ export const projectData: Project[] = [
     thumbnail: "/png/cleany.png",
     category: "mobile",
     status: "Published",
-    working: "Self-Driven Project",
+    working: "Feature Development",
    links: {
          googlePlay:
            "https://play.google.com/store/apps/details?id=com.cleany.user",
@@ -310,5 +310,5 @@ export const projectData: Project[] = [
 
 export const skills = {
   mobile: ['Flutter', 'Bloc State Management', 'Getx State Management', 'Provider State Management', 'Firebase (Authentication, Database, Cloud Messaging, Crashlytics, Analytics etc)', "RESTful APIs", 'One-Signal' , 'Agora SDK', 'Web-Socket Integration',  "Real-time Location Tracking ", "Marker Animation & Polylines" , "Google Maps SDK", "Geofence", "Tutorials", "Payment Integration (PayPal, Stripe, OZOW, PEACH, Kwik)", "Deep & Dynamic Linking", ],
-  others: ['Git/GitHub', 'CI/CD', 'Agile Methodology', " Unit, Widget, and Integration Testing using Flutter’s built-in tools", "Profiling and Debugging", 'App Store Deployment & Management', 'Play Store Deployment & Management']
+  others: ['Git/GitHub', 'CI/CD', 'Agile Methodology', " Unit, Widget, and Integration Testing using Flutter’s built-in tools", "Profiling and Debugging", 'App Store Deployment & Management', 'Play Store Deployment & Management', 'Huawei Store Deployment & Management']
 };
