@@ -117,15 +117,15 @@ const Hero = () => {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               />
-              
+
               {/* Status Indicator */}
               <motion.div
-                className="absolute -bottom-2 -right-2 bg-green-500 p-3 rounded-full shadow-xl z-20 border-4 border-white dark:border-slate-900"
+                className="absolute -bottom-0 -right-0 bg-green-500 p-2 rounded-full shadow-xl z-20 border-4 border-white dark:border-slate-900"
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <div className="w-4 h-4 rounded-full bg-white flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-green-500" />
+                <div className="w-2 h-2 rounded-full bg-white flex items-center justify-center">
+                  <div className="w-1 h-1 rounded-full bg-green-500" />
                 </div>
               </motion.div>
             </div>
