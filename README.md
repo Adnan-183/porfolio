@@ -1,17 +1,16 @@
-<h1 align="center">Hi 👋, I'm Muhammad Adnan</h1>
+# Hi 👋, I'm Muhammad Adnan
 
-<h3 align="center">💻 Flutter  </h3>
+<h3 align="center">💻 Flutter Developer</h3>
 
 ---
 
 ## 🙋‍♂️ About Me
 
 * 🔭 Currently working as a **Flutter Application Developer**
-* 💬 Ask me about **Flutter, Dart,**
+* 💬 Ask me about **Flutter, Dart**
 * 👯 Looking to collaborate on **Flutter projects**
 * 📫 Reach me at: **[adnanmoeen183@gmail.com](mailto:adnanmoeen183@gmail.com)**
 * 🌐 My Portfolio: **https://adnan-flutter-portfolio.vercel.app/**
-
 
 ---
 
@@ -34,16 +33,23 @@
 ## 🌐 Connect with Me:
 
 <p align="left">
-  <a href="https://www.linkedin.com/in/muhammad-dawood-zafar-259b00160" target="blank">
+  <a href="https://www.linkedin.com/in/adnan-moeen-128679209" target="blank">
     <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="30" width="40" />
   </a>
-  <a href="https://www.facebook.com/dawood.qurashi.96?mibextid=ZbWKwL" target="blank">
+  <a href="https://www.facebook.com/share/1CS1d4WCiQ/" target="blank">
     <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="Facebook" height="30" width="40" />
   </a>
-  <a href="https://x.com/dawood_qurashi?t=I9-wPxOEvj8vz5Lqn6nUag&s=09" target="blank">
-    <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="Twitter" height="30" width="40" />
-  </a>
+
 </p>
 
-<p align="center"> <img src="https://github-readme-stats.vercel.app/api?username=adnan-geeky&show_icons=true&theme=tokyonight" alt="Adnan's GitHub Stats" /> </p> <p align="center"> <img src="https://github-readme-streak-stats.herokuapp.com/?user=adnan-dawood&theme=tokyonight" alt="Adnan's GitHub Streak" /> </p>
+---
 
+## 📊 GitHub Stats:
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=Adnan-183&show_icons=true&theme=tokyonight" alt="Adnan's GitHub Stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Adnan-183&theme=tokyonight" alt="Adnan's GitHub Streak" />
+</p>
