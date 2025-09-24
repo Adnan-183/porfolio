@@ -190,7 +190,7 @@ const Skills = () => {
           {[
             { number: '15+', label: 'Technologies', icon: Code, color: 'from-blue-500 to-cyan-500' },
             { number: '50+', label: 'Projects Built', icon: Star, color: 'from-purple-500 to-pink-500' },
-            { number: '3+', label: 'Years Experience', icon: Award, color: 'from-emerald-500 to-teal-500' },
+            { number: '2+', label: 'Years Experience', icon: Award, color: 'from-emerald-500 to-teal-500' },
             { number: '100%', label: 'Code Quality', icon: TrendingUp, color: 'from-amber-500 to-orange-500' }
           ].map((stat, index) => (
             <GlassCard
