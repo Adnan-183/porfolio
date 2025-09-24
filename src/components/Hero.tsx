@@ -46,7 +46,7 @@ const Hero = () => {
 
   const achievements = [
     { number: '50+', label: 'Projects Delivered', icon: Rocket, color: 'from-blue-500 to-cyan-500' },
-    { number: '3+', label: 'Years Experience', icon: Award, color: 'from-purple-500 to-pink-500' },
+    { number: '2+', label: 'Years Experience', icon: Award, color: 'from-purple-500 to-pink-500' },
     { number: '100%', label: 'Client Satisfaction', icon: Users, color: 'from-emerald-500 to-teal-500' },
     { number: '24/7', label: 'Support Available', icon: Coffee, color: 'from-amber-500 to-orange-500' }
   ];
