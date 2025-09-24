@@ -116,17 +116,19 @@ const Hero = () => {
             <div className="relative">
               {/* Profile Image */}
               <GlassCard hover={false} className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto p-1">
-                className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl relative z-10 mx-auto"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src="/images/mypic.jpeg"
-                  alt="Muhammad Adnan - Mobile App Developer"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 via-transparent to-transparent" />
+                <motion.div
+                  className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl relative z-10 mx-auto"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="/images/mypic.jpeg"
+                    alt="Muhammad Adnan - Mobile App Developer"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 via-transparent to-transparent" />
+                </motion.div>
               </GlassCard>
               
               {/* Animated Ring */}
@@ -183,7 +185,7 @@ const Hero = () => {
                 <span className="text-purple-600 dark:text-purple-400 font-bold bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded-lg mx-2">innovative</span>, and 
                 <span className="text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">performant</span> cross-platform 
                 mobile applications using Flutter. Specializing in clean architecture and creating 
-              seamless user experiences.
+                seamless user experiences.
               </p>
             </GlassCard>
           </motion.div>
@@ -226,7 +228,7 @@ const Hero = () => {
           >
             {achievements.map((achievement, index) => (
               <GlassCard
-                key={stat.label}
+                key={achievement.label}
                 className="p-6 text-center group"
                 whileHover={{ scale: 1.05 }}
                 delay={index * 0.1}
@@ -249,8 +251,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </motion.div>
-
-
     </section>
   );
 };
