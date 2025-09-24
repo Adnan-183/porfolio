@@ -1,3 +1,4 @@
+import { a } from 'framer-motion/client';
 import { Project } from '../types';
 
 import { Project } from "../types";
@@ -51,16 +52,37 @@ export const projectData: Project[] = [
     tech: "Flutter • Bloc State Management •Firebase Integration •Stripe Payment",
     thumbnail: "/png/dawgpound.png",
     category: "mobile",
-    status: "In Development",
+    status: "Published",
     working: "Self-Driven Project",
     links: {
       googlePlay: "",
+      appStore: "https://apps.apple.com/us/app/dawg-pound/id6746443775",
     },
     features: [
       "Team Creation",
       "Match Scheduling",
       "Group Chat",
       "Member Management",
+    ],
+  },
+  {
+    id: "sheenMagazine",
+    title: "Sheen Magazine",
+    description:
+      "Digital magazine platform offering rich content experience with interactive features, offline reading capabilities, and seamless content management.",
+    tech: "Flutter • Getx State Management • Magazines Downloader • Revenue Cat • 1k+ Downloads",
+    thumbnail: "/png/sheen.png",
+    category: "mobile",
+    status: "Published",
+    working: "Feature Development",
+    links: {
+      googlePlay: "https://play.google.com/store/apps/details?id=com.magazine.sheen",
+      appStore: "https://apps.apple.com/us/app/sheen-magazine/id1623812336",
+    },
+    features: [
+      "Digital Magazine",
+"Offline Reading",
+"Interactive Content"
     ],
   },
   {
