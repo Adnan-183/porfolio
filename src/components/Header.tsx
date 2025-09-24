@@ -16,7 +16,7 @@ const Header = () => {
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
-      return saved ? saved === 'light' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: light)').matches;
     }
     return false;
   });
