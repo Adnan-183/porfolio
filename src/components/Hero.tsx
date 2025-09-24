@@ -1,7 +1,10 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, Sparkles, Code, Smartphone, Zap, Star, Rocket, Download } from 'lucide-react';
+import { ArrowDown, Sparkles, Code, Smartphone, Zap, Star, Rocket, Download, Award, Users, Coffee } from 'lucide-react';
 import { useRef } from 'react';
 import MagneticButton from './MagneticButton';
+import AnimatedText from './ui/AnimatedText';
+import GlassCard from './ui/GlassCard';
+import { fadeInUp, staggerContainer, floatingAnimation } from '../utils/animations';
 
 const FloatingElement = ({ 
   children, 
@@ -41,6 +44,13 @@ const Hero = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
+  const achievements = [
+    { number: '50+', label: 'Projects Delivered', icon: Rocket, color: 'from-blue-500 to-cyan-500' },
+    { number: '3+', label: 'Years Experience', icon: Award, color: 'from-purple-500 to-pink-500' },
+    { number: '100%', label: 'Client Satisfaction', icon: Users, color: 'from-emerald-500 to-teal-500' },
+    { number: '24/7', label: 'Support Available', icon: Coffee, color: 'from-amber-500 to-orange-500' }
+  ];
+
   return (
     <section
       ref={ref}
@@ -53,7 +63,7 @@ const Hero = () => {
         style={{ y, opacity }}
       >
         {/* Simplified gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-emerald-500/10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-emerald-500/20" />
         
         {/* Grid pattern */}
         <div 
@@ -64,6 +74,12 @@ const Hero = () => {
           }}
         />
       </motion.div>
+
+      {/* Floating geometric shapes */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div className="absolute top-1/4 left-1/6 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-xl" animate={floatingAnimation} />
+        <motion.div className="absolute bottom-1/3 right-1/6 w-24 h-24 bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 rounded-full blur-xl" animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 2 } }} />
+      </div>
 
       {/* Floating Tech Icons - Hidden on mobile for performance */}
       <div className="absolute inset-0 pointer-events-none hidden md:block">
@@ -86,7 +102,9 @@ const Hero = () => {
         </FloatingElement>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <motion.div 
+        className="container mx-auto px-4 md:px-6 relative z-10"
+        variants={staggerContainer} initial="hidden" animate="visible">
         <div className="max-w-5xl mx-auto text-center">
           {/* Profile Section */}
           <motion.div
@@ -97,7 +115,7 @@ const Hero = () => {
           >
             <div className="relative">
               {/* Profile Image */}
-              <motion.div
+              <GlassCard hover={false} className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto p-1">
                 className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl relative z-10 mx-auto"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
@@ -109,7 +127,7 @@ const Hero = () => {
                   loading="eager"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 via-transparent to-transparent" />
-              </motion.div>
+              </GlassCard>
               
               {/* Animated Ring */}
               <motion.div
@@ -120,7 +138,7 @@ const Hero = () => {
 
               {/* Status Indicator */}
               <motion.div
-                className="absolute -bottom-0 -right-0 bg-green-500 p-2 rounded-full shadow-xl z-20 border-4 border-white dark:border-slate-900"
+                className="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 p-3 rounded-full shadow-xl z-20 border-4 border-white dark:border-slate-900"
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
@@ -138,14 +156,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
-              <span className="block text-slate-800 dark:text-white mb-2">
-                Mobile App
-              </span>
-              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent">
-                Developer
-              </span>
-            </h1>
+            <AnimatedText 
+              text="Mobile App Developer"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight bg-gradient-to-r from-blue-600 via-purple-600 to-emerald-600 bg-clip-text text-transparent"
+              delay={0.3}
+            />
             
             {/* Decorative Elements */}
             <div className="flex items-center justify-center space-x-4 mt-6">
@@ -162,13 +177,15 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <p className="text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              I craft <span className="text-blue-600 font-semibold">exceptional</span>, 
-              <span className="text-purple-600 font-semibold"> innovative</span>, and 
-              <span className="text-emerald-600 font-semibold"> performant</span> cross-platform 
-              mobile applications using Flutter. Specializing in clean architecture and creating 
+            <GlassCard className="p-8 max-w-4xl mx-auto" gradient>
+              <p className="text-lg md:text-xl lg:text-2xl text-slate-700 dark:text-slate-200 leading-relaxed">
+                I craft <span className="text-blue-600 dark:text-blue-400 font-bold bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded-lg">exceptional</span>, 
+                <span className="text-purple-600 dark:text-purple-400 font-bold bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded-lg mx-2">innovative</span>, and 
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-100 dark:bg-emerald-900/30 px-2 py-1 rounded-lg">performant</span> cross-platform 
+                mobile applications using Flutter. Specializing in clean architecture and creating 
               seamless user experiences.
-            </p>
+              </p>
+            </GlassCard>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -181,7 +198,7 @@ const Hero = () => {
             <MagneticButton>
               <a
                 href="#projects"
-                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center space-x-3"
+                className="group px-10 py-5 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 flex items-center space-x-3 border border-white/20"
               >
                 <span>Explore My Work</span>
                 <ArrowDown className="w-5 h-5 rotate-[-90deg] group-hover:translate-x-1 transition-transform" />
@@ -192,7 +209,7 @@ const Hero = () => {
               <a
                 href="/pdf/Adnan Moeen.pdf"
                 download
-                className="group px-8 py-4 bg-white/20 backdrop-blur-xl text-slate-800 dark:text-white border-2 border-slate-300/30 hover:border-blue-500/50 font-bold text-lg rounded-2xl transition-all duration-300 shadow-lg flex items-center space-x-3"
+                className="group px-10 py-5 bg-white/20 backdrop-blur-xl text-slate-800 dark:text-white border-2 border-slate-300/30 hover:border-blue-500/50 font-bold text-lg rounded-2xl transition-all duration-500 shadow-xl hover:shadow-2xl flex items-center space-x-3"
               >
                 <Download className="w-5 h-5" />
                 <span>Download CV</span>
@@ -202,35 +219,36 @@ const Hero = () => {
 
           {/* Stats */}
           <motion.div
-            className="grid grid-cols-3 gap-6 max-w-3xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            {[
-              { number: '50+', label: 'Projects', icon: Rocket },
-              { number: '2+', label: 'Years Exp', icon: Star },
-              { number: '100%', label: 'Success Rate', icon: Sparkles }
-            ].map((stat, index) => (
-              <motion.div
+            {achievements.map((achievement, index) => (
+              <GlassCard
                 key={stat.label}
-                className="text-center group"
+                className="p-6 text-center group"
                 whileHover={{ scale: 1.05 }}
+                delay={index * 0.1}
               >
-                <div className="w-12 h-12 mx-auto mb-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-blue-600" />
+                <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${achievement.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                  <achievement.icon className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-1">
-                  {stat.number}
+                <motion.div 
+                  className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${achievement.color} bg-clip-text text-transparent mb-2`}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {achievement.number}
+                </motion.div>
+                <div className="text-slate-600 dark:text-slate-300 text-sm font-semibold">
+                  {achievement.label}
                 </div>
-                <div className="text-slate-600 dark:text-slate-400 text-sm font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
+              </GlassCard>
             ))}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
 
     </section>

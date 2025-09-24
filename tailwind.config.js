@@ -58,6 +58,9 @@ export default {
         'pulse-slow': 'pulse 3s infinite',
         'float': 'float 6s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
+        'gradient-x': 'gradient-x 15s ease infinite',
+        'gradient-y': 'gradient-y 15s ease infinite',
+        'gradient-xy': 'gradient-xy 15s ease infinite',
       },
       keyframes: {
         fadeIn: {
@@ -80,6 +83,20 @@ export default {
           '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
           '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' },
         },
+        'gradient-y': {
+          '0%, 100%': { 'background-size': '400% 400%', 'background-position': 'center top' },
+          '50%': { 'background-size': '200% 200%', 'background-position': 'center center' },
+        },
+        'gradient-x': {
+          '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+          '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+        },
+        'gradient-xy': {
+          '0%, 100%': { 'background-size': '400% 400%', 'background-position': 'left center' },
+          '25%': { 'background-size': '400% 400%', 'background-position': 'right center' },
+          '50%': { 'background-size': '400% 400%', 'background-position': 'center top' },
+          '75%': { 'background-size': '400% 400%', 'background-position': 'center bottom' },
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -92,12 +109,22 @@ export default {
         'glow': '0 0 20px rgba(59, 130, 246, 0.3)',
         'glow-lg': '0 0 40px rgba(59, 130, 246, 0.4)',
         'glow-xl': '0 0 60px rgba(59, 130, 246, 0.5)',
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        'glass-lg': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        'glass-xl': '0 35px 60px -12px rgba(0, 0, 0, 0.3)',
       },
       perspective: {
         '1000': '1000px',
       },
       transformStyle: {
         'preserve-3d': 'preserve-3d',
+      },
+      backdropBlur: {
+        'xs': '2px',
+        '4xl': '72px',
+      },
+      blur: {
+        '4xl': '72px',
       },
     },
   },
