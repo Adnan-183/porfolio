@@ -13,9 +13,13 @@ const Services = () => (
     }
     intro="Most features touch the database, the API, the app and a web screen. I can do all four, so nothing gets lost between hand-offs."
   >
-    <div className="grid gap-px bg-line sm:grid-cols-3">
+    <div className="grid sm:grid-cols-3">
       {services.map((service, i) => (
-        <Reveal key={service.id} delay={i * 0.08} className="bg-bg sm:pr-6 sm:[&:not(:first-child)]:pl-6">
+        <Reveal
+          key={service.id}
+          delay={i * 0.08}
+          className="border-line sm:pr-6 [&:not(:first-child)]:border-t sm:[&:not(:first-child)]:border-l sm:[&:not(:first-child)]:border-t-0 sm:[&:not(:first-child)]:pl-6"
+        >
           <article className="flex h-full flex-col py-6 sm:py-0">
             <h3 className="font-serif text-3xl">{service.title}</h3>
             <p className="mt-3 leading-relaxed text-fg/80">{service.description}</p>

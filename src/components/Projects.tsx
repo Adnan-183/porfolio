@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { projectData, projectDomains } from '../data/projects-data';
+import { backendWork, projectData, projectDomains } from '../data/projects-data';
 import { ProjectDomain } from '../types';
 import ProjectCard, { StatusLabel, StoreLinks } from './ProjectCard';
 import Reveal from './ui/Reveal';
@@ -25,11 +25,46 @@ const Projects = () => {
       label="Selected work"
       title={
         <>
-          Apps that move <em className="text-accent">people</em> and <em className="text-accent">parcels</em>.
+          The <em className="text-accent">server</em> side and the <em className="text-accent">app</em> side.
         </>
       }
-      intro="A few of the mobile apps I've shipped. Most are logistics, ride-hailing and tracking products with live maps, bidding and payments. The backend and web work behind them is under Experience."
+      intro="Backend systems I build and run at Geekybugs, then the mobile apps I've shipped. Most of it is logistics, ride-hailing and tracking: live maps, bidding, payments and the APIs behind them."
     >
+      <Reveal className="mb-4 flex items-baseline justify-between gap-4">
+        <h3 className="font-serif text-3xl">Backend &amp; APIs</h3>
+        <p className="label">At Geekybugs</p>
+      </Reveal>
+      <div className="grid border-b border-line sm:grid-cols-2">
+        {backendWork.map((work, i) => (
+          <Reveal
+            key={work.id}
+            delay={(i % 2) * 0.08}
+            className="h-full border-t border-line sm:[&:nth-child(odd)]:border-r"
+          >
+            <article className="group flex h-full flex-col py-7 transition-colors duration-300 hover:bg-surface sm:px-6">
+              <p className="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</p>
+              <h4 className="mt-3 font-serif text-3xl leading-tight transition-transform duration-300 group-hover:translate-x-1">
+                {work.title}
+              </h4>
+              <p className="mt-3 leading-relaxed text-fg/85">{work.description}</p>
+              <ul className="mt-4 flex-1 space-y-1.5 text-sm text-muted">
+                {work.highlights.map((point) => (
+                  <li key={point} className="flex gap-2">
+                    <span className="text-accent">–</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 font-mono text-[11px] text-muted">{work.stack.join(' / ')}</p>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal className="mb-4 mt-20 flex items-baseline justify-between gap-4">
+        <h3 className="font-serif text-3xl">Mobile apps</h3>
+        <p className="label">{featured.length} featured</p>
+      </Reveal>
       <div className="border-b border-line">
         {featured.map((project, i) => (
           <Reveal key={project.id}>
@@ -41,7 +76,7 @@ const Projects = () => {
       <Reveal className="mt-20">
         <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
           <h3 className="font-serif text-3xl">
-            Also built <span className="text-muted">({others.length})</span>
+            More apps <span className="text-muted">({others.length})</span>
           </h3>
           <div className="flex flex-wrap gap-x-4 gap-y-2" role="tablist" aria-label="Filter projects">
             {filters.map((f) => (

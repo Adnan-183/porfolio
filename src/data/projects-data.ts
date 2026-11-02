@@ -1,4 +1,4 @@
-import { Project, ProjectDomain } from '../types';
+import { BackendWork, Project, ProjectDomain } from '../types';
 
 export const projectDomains: ProjectDomain[] = [
   'Logistics & Mobility',
@@ -266,3 +266,55 @@ export const projectData: Project[] = [
 ];
 
 export const publishedCount = projectData.filter((p) => p.status === 'Published').length;
+
+// Backend work at Geekybugs, described from the resume. Client names are left out.
+export const backendWork: BackendWork[] = [
+  {
+    id: 'payments-orders',
+    title: 'Payments & order processing',
+    description:
+      'Payment and order flows where the payment provider confirms by webhook and the order is handed on for shipping.',
+    highlights: [
+      'Razorpay and Stripe payments verified through webhooks',
+      'Orders pushed to Shiprocket for fulfilment',
+      'Background and cron jobs backed by Redis',
+    ],
+    stack: ['NestJS', 'PostgreSQL', 'Prisma', 'Redis', 'Razorpay', 'Stripe', 'Shiprocket'],
+  },
+  {
+    id: 'auth-access',
+    title: 'Auth, roles & permissions',
+    description:
+      'Authentication and access control for the APIs behind the apps.',
+    highlights: [
+      'JWT access and refresh tokens, plus session management',
+      'Role-based access control with fine-grained permissions',
+      'Rate limiting and secure API workflows',
+    ],
+    stack: ['NestJS', 'TypeScript', 'PostgreSQL', 'Prisma', 'JWT'],
+  },
+  {
+    id: 'tracking-api',
+    title: 'Live tracking & maps API',
+    description:
+      'The server side of the GPS and fleet apps: device data from Traccar and Google Maps, served to the Flutter apps.',
+    highlights: [
+      'Traccar API integration for GPS devices',
+      'Google Maps services for locations and routes',
+      'Firebase push notifications for alerts and updates',
+    ],
+    stack: ['Node.js', 'NestJS', 'Traccar', 'Google Maps', 'Firebase / FCM'],
+  },
+  {
+    id: 'aws-infra',
+    title: 'AWS deployment & operations',
+    description:
+      'Running the services in staging and production, and keeping them fast and reliable.',
+    highlights: [
+      'Containers on ECS/Fargate and apps on Elastic Beanstalk',
+      'RDS PostgreSQL, S3 storage and CloudFront delivery',
+      'API and query optimisation, production troubleshooting',
+    ],
+    stack: ['AWS', 'ECS / Fargate', 'Elastic Beanstalk', 'RDS', 'S3', 'CloudFront', 'Docker'],
+  },
+];
