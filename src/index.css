@@ -1,3 +1,93 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Design tokens: space-separated RGB so Tailwind can apply alpha.
+   Paper and ink, with a single signal-orange accent. */
+@layer base {
+  :root {
+    --bg: 244 241 234;
+    --surface: 250 248 243;
+    --surface-2: 235 231 221;
+    --line: 212 206 194;
+    --fg: 22 21 19;
+    --muted: 107 102 93;
+    --accent: 214 72 20;
+    --success: 46 125 50;
+    color-scheme: light;
+  }
+
+  .dark {
+    --bg: 19 18 16;
+    --surface: 26 25 22;
+    --surface-2: 35 33 29;
+    --line: 54 51 46;
+    --fg: 236 232 222;
+    --muted: 156 150 138;
+    --accent: 255 112 61;
+    --success: 129 199 132;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+  }
+
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--bg));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-8;
+  }
+
+  /* Small uppercase mono label, like a spec sheet. */
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-muted;
+  }
+
+  /* Text link with an underline that draws in on hover. */
+  .link {
+    @apply relative inline-flex items-center gap-1 text-fg;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease, color 0.2s ease;
+  }
+
+  .link:hover {
+    background-size: 100% 1px;
+    @apply text-accent;
+  }
+
+  /* Same, but underlined at rest. */
+  .link-u {
+    @apply link;
+    background-size: 100% 1px;
+  }
+
+  .link-u:hover {
+    background-size: 0% 1px;
+  }
+}

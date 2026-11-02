@@ -1,12 +1,22 @@
+export type ProjectDomain =
+  | 'Logistics & Mobility'
+  | 'GPS & Tracking'
+  | 'Commerce & Services'
+  | 'Social & Media';
+
+export type ProjectStatus = 'Published' | 'In Development' | 'Unreleased';
+
 export interface Project {
   id: string;
   title: string;
   description: string;
-  tech: string;
-  thumbnail: string;
-  category: 'mobile' | 'web' | 'backend';
-  status: 'Published' | 'In Development' | 'Unpublished' | 'In-Development';
-  working: 'Feature Development' | 'Self-Driven Project' | 'Worked within Agile Team';
+  domain: ProjectDomain;
+  tech: string[];
+  thumbnail?: string;
+  status?: ProjectStatus;
+  /** Short proof point, e.g. download count or store presence. */
+  metric?: string;
+  featured?: boolean;
   links: {
     googlePlay?: string;
     appStore?: string;
@@ -15,36 +25,35 @@ export interface Project {
   features?: string[];
 }
 
+export interface Service {
+  id: 'backend' | 'mobile' | 'frontend';
+  title: string;
+  description: string;
+  points: string[];
+  stack: string[];
+}
+
+export interface Experience {
+  company: string;
+  role: string;
+  start: string;
+  end: string;
+  summary: string;
+  highlights: string[];
+}
+
+export interface Education {
+  degree: string;
+  school: string;
+  period: string;
+}
+
+export interface SkillGroup {
+  title: string;
+  items: string[];
+}
+
 export interface NavLink {
   label: string;
   href: string;
-}
-
-export interface Skill {
-  name: string;
-  level: number;
-  category: 'mobile' | 'backend' | 'tools' | 'other';
-}
-
-export interface ContactMethod {
-  icon: React.ReactNode;
-  title: string;
-  value: string;
-  href: string;
-  gradient: string;
-}
-
-export interface AnimationConfig {
-  duration: number;
-  delay?: number;
-  ease?: string;
-}
-
-export interface ThemeColors {
-  primary: string;
-  secondary: string;
-  accent: string;
-  background: string;
-  surface: string;
-  text: string;
 }
