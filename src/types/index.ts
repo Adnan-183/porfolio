@@ -25,6 +25,14 @@ export interface Project {
   features?: string[];
 }
 
+export interface BackendWork {
+  id: string;
+  title: string;
+  description: string;
+  highlights: string[];
+  stack: string[];
+}
+
 export interface Service {
   id: 'backend' | 'mobile' | 'frontend';
   title: string;
